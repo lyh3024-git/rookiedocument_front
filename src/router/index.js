@@ -12,9 +12,20 @@ Vue.use(VueRouter)
     component: Main
   },
   {
+    path: '/pmsg',
+    name: 'Pmsg',
+    meta: {tittle:'个人信息',},
+    component: () => import('../views/Personalmsg.vue')
+  }, {
     path: '/home',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/welcome',
+    name: 'Welcome',
+    meta: {tittle:'欢迎页',},
+    component: () => import('../views/Welcome.vue')
   },
   {
     path: '/register',
@@ -29,23 +40,11 @@ Vue.use(VueRouter)
     component: () => import('../views/Login.vue')
   },
   {
-    path: '/changepwd',
-    name: 'Changepwd',
-    meta: {title: '修改密码',},
-    component: () => import('../views/Cgpwd.vue')
-  },
-  {
     path: 'doc/:id',
     name:'Document',
     meta: {tittle:'文档',},
     component: () => import('../views/Doc.vue')
-  },
-  {
-    path: '/editor',
-    name:'Editor',
-    meta: {tittle:'编辑器',},
-    component: () => import('../views/Editor.vue')
-  },
+  }
 ]
 
 const router = new VueRouter({
@@ -53,3 +52,5 @@ const router = new VueRouter({
 })
 
 export default router
+
+
