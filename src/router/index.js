@@ -17,12 +17,6 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/welcome',
-    name: 'Welcome',
-    meta: {tittle:'欢迎页',},
-    component: () => import('../views/Welcome.vue')
-  },
-  {
     path: '/register',
     name: 'Register',
     meta: {title: '注册',},
@@ -45,7 +39,13 @@ Vue.use(VueRouter)
     name:'Document',
     meta: {tittle:'文档',},
     component: () => import('../views/Doc.vue')
-  }
+  },
+  {
+    path: '/editor',
+    name:'Editor',
+    meta: {tittle:'编辑器',},
+    component: () => import('../views/Editor.vue')
+  },
 ]
 
 const router = new VueRouter({

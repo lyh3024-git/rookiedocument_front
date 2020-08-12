@@ -6,6 +6,7 @@
             <el-menu-item index="1" class="nav">
                 <img src="image/logo.png" alt="">
             </el-menu-item>
+
             <el-menu-item index="2" class="nav">个人中心
                 <i class="el-icon-user"></i>
             </el-menu-item>
@@ -13,13 +14,13 @@
             <el-menu-item index="3" class="nav">消息中心
                 <i class="el-icon-s-promotion"></i>
             </el-menu-item>
+
             <el-menu-item index="4" class="nav">
                 <el-button type="info" icon="el-icon-search" plain class="el-searchbutton" size="small">搜索</el-button>
-
             </el-menu-item>
+
             <el-menu-item index="5" class="nav">
                 <el-input placeholder="搜索文档" v-model="input" clearable></el-input>
-
             </el-menu-item>
         </el-menu>
 
@@ -89,7 +90,7 @@
 
         <div class="test">
             <el-row>
-                <el-button type="info" plain class="el-buttontest">新建</el-button>
+                <el-button type="info" plain class="el-buttontest" @click="toEditor">新建</el-button>
                 <el-button type="info" plain class="el-buttontest">模板库</el-button>
                 <el-button type="info" plain class="el-buttontest">上传</el-button>
             </el-row>
@@ -110,7 +111,9 @@
 
         },
         methods: {
-
+            toEditor() {
+                this.$router.push({path: '/editor'});
+            }
         },
     };
 </script>

@@ -1,4 +1,4 @@
-# rookiedocument_front
+# rightdarkdoc
 
 ## Project setup
 ```
@@ -22,3 +22,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+npm i element-ui -S
+npm i --save ant-design-vue
+npm install wangeditor --save
