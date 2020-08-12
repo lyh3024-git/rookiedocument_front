@@ -5,8 +5,8 @@
                 <div class="test1">菜鸟文档</div>
                     <div class="test2">专注于word的专业办公软件</div>
                     <div class="test3">
-                        <el-button round class="home-button" @click="toRegister">注册</el-button>
-                        <el-button round class="home-button" @click="toLogin">登录</el-button>
+                        <el-button round class="home-button">注册</el-button>
+                        <el-button round class="home-button">登录</el-button>
                     </div>
             </el-header>
             <el-main>
@@ -42,9 +42,6 @@
             toRegister() {
                 this.$router.push({path: '/register'});
             },
-            //toRegister() {
-             //   this.$router.push({path: '/changepwd'});
-             //},
             toLogin() {
                 this.$router.push({path: '/login'});
             }
