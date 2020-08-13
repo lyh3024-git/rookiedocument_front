@@ -156,10 +156,6 @@
                                             <span style="margin-left:3px">打开</span>
                                         </v-contextmenu-item>
                                         <v-contextmenu-item @click="handleRightMenuClick">
-                                            <el-icon class="el-icon-edit-outline"/>
-                                            <span style="margin-left:3px">重命名</span>
-                                        </v-contextmenu-item>
-                                        <v-contextmenu-item @click="handleRightMenuClick">
                                             <el-icon class="el-icon-setting"/>
                                             <span style="margin-left:3px">权限设置</span>
                                         </v-contextmenu-item>
@@ -176,9 +172,10 @@
                                 </a-list-item>
                             </a-list>
                         </a-col>
-                        <a-col :span="2" style="text-align:left;margin-right:24px">
+
+                        <!--<a-col :span="2" style="text-align:left;margin-right:24px">
                             <div>
-                                <!--团队名称-->
+
                                 <span v-if="!isedit_name" style="font-size:40px;margin-left:24px">
                                 <b>{{current_team.teamname}}</b>
                                 <transition name="slide-fade">
@@ -201,7 +198,7 @@
                                     />
                                 </div>
 
-                                <!--团队成员列表-->
+
                                 <div style="font-size:20px">团队成员</div>
                                 <a-list item-layout="horizontal" :data-source="team_members">
                                     <div slot="header">
@@ -252,15 +249,14 @@
 
                                 </a-list>
                             </div>
-                        </a-col>
+                        </a-col>-->
+
                     </a-row>
                 </div>
                 <div v-if="sider_status==3">
                     <!--回收站页面部分-->
-                    <div style="font-size:40px;text-align:left;margin:48px 0 -24px 48px">
-                        <b>回收站</b>
-                    </div>
-                    <el-row>
+                    <div style="font-size:25px;text-align:left;margin:48px 0 -24px 48px">回收站</div>
+                    <!--<el-row>
                         <el-col :span="3" style="text-align:right">
                             <a-popconfirm
                                     placement="bottomRight"
@@ -277,7 +273,7 @@
                             </a-popconfirm>
                         </el-col>
                         <el-col :span="21"></el-col>
-                    </el-row>
+                    </el-row>-->
                     <div style="margin:24px;text-align:center">
                         <a-list
                                 :grid="{ column:5, gutter: 10, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 6 }"
