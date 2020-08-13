@@ -1,0 +1,37 @@
+{
+  "id": "2000803",
+  "name": "wt-icon",
+  "font_family": "iconfont",
+  "css_prefix_text": "el-icon-wt",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "8106244",
+      "name": "protect",
+      "font_class": "protect",
+      "unicode": "e69e",
+      "unicode_decimal": 59038
+    },
+    {
+      "icon_id": "8106270",
+      "name": "phone",
+      "font_class": "phone",
+      "unicode": "e6a0",
+      "unicode_decimal": 59040
+    },
+    {
+      "icon_id": "8106288",
+      "name": "nickname",
+      "font_class": "nickname",
+      "unicode": "e6a1",
+      "unicode_decimal": 59041
+    },
+    {
+      "icon_id": "8777166",
+      "name": "email",
+      "font_class": "icon-test",
+      "unicode": "e64b",
+      "unicode_decimal": 58955
+    }
+  ]
+}
