@@ -1,4 +1,4 @@
-# rightdarkdoc
+# Rookiedoc
 
 ## Project setup
 ```
