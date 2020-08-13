@@ -1,40 +1,186 @@
 <template>
-    <div>
-        <el-container>
-            <el-main style="margin:80px">
-                <el-input id="title" v-model="input" placeholder="请输入内容" style="width:100px;margin:20px">></el-input>
-                <div ref="editor" style="width:900px;margin:0 auto;text-align:left"></div>
-                <el-button type="primary" v-on:click="getContent" style="margin:20px">查看内容</el-button>
-                <el-button type="primary" v-on:click="getContent" style="margin:20px">返回</el-button>
-            </el-main>
-        </el-container>
+    <div class="home">
+        <!--顶部导航栏-->
+        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect"
+            active-text-color="none">
+
+            <el-menu-item index="1" class="nav">
+                <img src="image/logo.png" alt="">
+            </el-menu-item>
+
+            <el-menu-item index="2" class="nav">个人中心
+                <i class="el-icon-user"></i>
+            </el-menu-item>
+
+            <el-menu-item index="3" class="nav">消息中心
+                <i class="el-icon-s-promotion"></i>
+            </el-menu-item>
+
+            <el-menu-item index="4" class="nav">
+                <el-button type="info" icon="el-icon-search" plain class="el-searchbutton" size="small">搜索</el-button>
+            </el-menu-item>
+
+            <el-menu-item index="5" class="nav">
+                <el-input placeholder="搜索文档" v-model="input" clearable></el-input>
+            </el-menu-item>
+        </el-menu>
+
+
+
+        <!--左侧导航栏部分-->
+        <el-row class="test">
+            <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
+                <!--工作台-->
+                <el-menu-item index="1">
+                    <i class="el-icon-location"></i>
+                    <span slot="title">我的工作台</span>
+                </el-menu-item>
+
+                <!--团队部分-->
+                <el-submenu index="2">
+                    <template slot="title">
+                        <i class="el-icon-menu"></i>
+                        <span>我的团队</span>
+                    </template>
+
+                    <el-menu-item-group>
+                        <template slot="title">团队1</template>
+                    </el-menu-item-group>
+                    <el-menu-item-group>
+                        <template slot="title">团队2</template>
+                    </el-menu-item-group>
+                    <el-menu-item-group>
+                        <template slot="title">团队3</template>
+                    </el-menu-item-group>
+                </el-submenu>
+
+
+                <el-menu-item index="3">
+                    <i class="el-icon-document"></i>
+                    <span slot="title">我的桌面</span>
+                </el-menu-item>
+
+                <!--回收站部分-->
+                <el-menu-item index="4">
+                    <i class="el-icon-setting"></i>
+                    <span slot="title">回收站</span>
+                </el-menu-item>
+            </el-menu>
+        </el-row>
+
+
+
+
+        <div class="test">
+            <div class="main-font">
+                我的桌面
+            </div>
+            <div >
+                <input type="file" accept=".docx">
+            </div>
+        </div>
+
+        <div class="test">
+            <el-row>
+                <el-button type="info" plain class="el-buttontest" @click="toEditor">新建</el-button>
+                <el-button type="info" plain class="el-buttontest">模板库</el-button>
+                <el-button type="info" plain class="el-buttontest">上传</el-button>
+                <el-button type="info" plain class="el-buttontest">创建团队</el-button>
+            </el-row>
+        </div>
+
     </div>
 </template>
 
 <script>
-    import E from 'wangeditor'
-
+    // @ is an alias to /src
     export default {
-        name: 'editor',
+        name: "Home",
+        components: {},
         data() {
             return {
-                editorContent: ''
-            }
+                createFromTempleteVisible:false,
+                createTeamVisible:false,
+            };
+        },
+        watch: {
+
         },
         methods: {
-            getContent: function () {
-                alert(this.editorContent)
+            toEditor() {
+                this.$router.push({path: '/editor'});
             }
         },
-        mounted() {
-            var editor = new E(this.$refs.editor)
-            editor.customConfig.onchange = (html) => {
-                this.editorContent = html
-            }
-            editor.create()
-        }
-    }
+    };
 </script>
 
 <style scoped>
+    .test:nth-of-type(1) {
+        width: 15%;
+        float: left;
+    }
+
+    .test:nth-of-type(2) {
+        width: 70%;
+        float: left;
+
+    }
+
+    .main-font {
+        font-family: cursive;
+        font-size: 22px;
+        padding-top: 10px;
+        padding-left: 50px;
+    }
+
+    .test:nth-of-type(3) {
+        width: 10%;
+        float: left;
+    }
+
+    .nav:nth-of-type(1) {
+
+        float: left;
+    }
+
+    .nav:nth-of-type(2) {
+        float: right;
+    }
+
+    .nav:nth-of-type(3) {
+        float: right;
+
+    }
+
+    .nav:nth-of-type(4) {
+        padding-left: 0;
+        float: right;
+    }
+
+    .nav:nth-of-type(5) {
+        padding-right: 5px;
+        float: right;
+    }
+
+    .el-menu-vertical-demo {
+        padding-top: 35px;
+    }
+
+    .el-buttontest:nth-of-type(1) {
+        margin: 10px 20px;
+        padding: 12px 27px;
+    }
+
+    .el-buttontest:nth-of-type(2) {
+        margin: 20px 20px;
+    }
+
+    .el-buttontest:nth-of-type(3) {
+        margin: 20px 20px;
+        padding: 12px 27px;
+    }
+
+    .el-searchbutton {
+        background-color: gray;
+    }
 </style>

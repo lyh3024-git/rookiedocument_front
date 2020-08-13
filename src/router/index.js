@@ -46,6 +46,18 @@ Vue.use(VueRouter)
     meta: {tittle:'编辑器',},
     component: () => import('../views/Editor.vue')
   },
+  {
+    path: '/pmsg',
+    name:'Pmsg',
+    meta: {tittle:'个人页面',},
+    component: () => import('../views/Personalmsg.vue')
+  },
+      {
+    path: '/test',
+    name:'Test',
+    meta: {tittle:'个人页面',},
+    component: () => import('../views/Test.vue')
+  },
 ]
 
 const router = new VueRouter({

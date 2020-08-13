@@ -2,15 +2,17 @@
     <div class="re-header">
         <div @click="toIndex" class="top-logo"/>
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect"
-            active-text-color="none">
+                 active-text-color="none">
 
             <el-menu-item index="1" class="nav">
                 <img src="image/logo.png" alt="">
             </el-menu-item>
 
-            <el-menu-item index="2" class="nav">个人中心
-                <i class="el-icon-user"></i>
-            </el-menu-item>
+            <el-submenu index="2" class="nav">
+                <template slot="title"><i class="el-icon-user"></i>个人中心</template>
+                <el-menu-item index="2-1" @click="toPmsg">个人主页</el-menu-item>
+                <el-menu-item index="2-2">退出登录</el-menu-item>
+            </el-submenu>
 
             <el-menu-item index="3" class="nav">消息中心
                 <i class="el-icon-s-promotion"></i>
@@ -79,6 +81,9 @@
             },
             toLogin() {
                 this.$router.push({path: '/login'});
+            },
+            toPmsg() {
+                this.$router.push({path: '/pmsg'});
             }
         }
     };
