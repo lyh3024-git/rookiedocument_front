@@ -24,5 +24,11 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 npm i element-ui -S
+
 npm i --save ant-design-vue
+
 npm install wangeditor --save
+
+npm install --save vue-router vuex
+
+npm install less-loader
