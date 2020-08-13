@@ -8,4 +8,6 @@ npm install wangeditor --save
 
 npm install --save axios vue-axios 
 
-npm install --save v-contextmenu v-contextmenu/dist/index.css 
+npm install --save v-contextmenu v-contextmenu/dist/index.css (npm install vue-contextmenu --save)
+
+npm install less-loader --save
