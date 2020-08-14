@@ -1,5 +1,6 @@
 <template>
   <div :model="msg" class="pmsg" ref="msg">
+      <AppHeader></AppHeader>
     <div class="d1" style="margin-top: 100px">
       <div class="d2"><span class="el-icon-wtnickname"> </span>昵称：</div>
       <div style="float: left">
@@ -68,11 +69,14 @@
 import Vue from 'vue'
 import {Message} from 'element-ui'
 import {pmsg} from '../api/api'
+import AppHeader from './Header'
 
 Vue.prototype.$message=Message
 export default {
   name: "pmsg",
-  components: {},
+  components: {
+      AppHeader
+  },
   data() {
     return {//此处将改为从后端获得的个人所有信息
       edit1: false,
@@ -101,6 +105,7 @@ export default {
           {required: true, message: '请确认新密码', trigger: 'blur'}
           ]
       },
+
     }
   },
   watch: {

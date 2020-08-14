@@ -7,14 +7,38 @@ Vue.use(VueRouter)
 
   const routes = [
   {
-    path: '/',
+    path: '/Main',
     name: 'Main',
     component: Main
   },
   {
-    path: '/home',
+    path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: {title: '主页',},
+    //redirect: '/Main',
+    children: [
+        {
+            path: '/recent',
+            name: 'Recent',
+            component: () => import('../components/worktable/Recent')
+        },
+        {
+            path: '/favour',
+            name: 'Favour',
+            component: () => import('../components/worktable/Favour')
+        },
+        {
+            path: '/mydoc',
+            name: 'Mydoc',
+            component: () => import('../components/worktable/Mydoc')
+        },
+        {
+            path: '/trash',
+            name: 'Trash',
+            component: () => import('../components/worktable/Trash')
+        }
+    ]
   },
   {
     path: '/register',

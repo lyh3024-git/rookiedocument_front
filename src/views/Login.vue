@@ -28,6 +28,7 @@
 </template>
 
 <script>
+    import {login} from '../api/api'
     export default {
         data() {
             return {
@@ -41,10 +42,25 @@
             onSubmit(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        alert('登录成功');
+                       // alert('登录成功');
                         //后接跳转函数
                         //测试
-                        this.$router.push({path: '/home'});
+                        //this.$router.push({path: '/home'});
+                        var that = this;
+                        login({
+                            username: that.form.username, //当前页码
+                            password: that.form.password
+                        }).then((response) => {
+                            if (response.data.flag === "success") {
+                                console.log(response.data);
+                                that.setCookie('name', that.form.username, 7);
+                                //存储在store
+                                this.$router.push({path: '/home'});
+                            } else {
+                                alert('密码错误')
+                                this.$router.push({path: '/login'});
+                            }
+                        })
                     } else {
                         console.log('error submit!!');
                         return false;

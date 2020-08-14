@@ -35,6 +35,7 @@
 </template>
 
 <script>
+    import {register} from '../api/api'
     export default {
         data() {
             var validatePass = (rule, value, callback) => {
@@ -77,8 +78,20 @@
             onSubmit(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        alert('注册成功');
+                        //alert('注册成功');
                         //后接跳转函数
+                        var that = this;
+                        register({
+                            email: that.form.email,
+                            password: that.form.password,
+                            username: that.form.username,
+                        }).then((response) => {
+                            console.log(response)
+                            this.$router.push({path: '/login'});
+
+                        }).catch(function (error) {
+                            that.error.mobile = error.username ? error.username[0] : '';
+                        });
                     } else {
                         console.log('error submit!!');
                         return false;

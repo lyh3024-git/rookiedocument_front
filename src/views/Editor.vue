@@ -1,34 +1,41 @@
 <template>
-    <div class="docedit" style="width:900px;margin:220px auto;text-align:center">
-        <el-form ref="form" :model="form" label-width="80px" :rules="rules"
-                 style="margin-top:100px;margin-left:5px;font-size:38px;float:left">
-            <el-form-item
-                    label="文件名"
-                    prop="docname"
-                    :rules="[
+    <div>
+        <AppHeader></AppHeader>
+        <div class="docedit" style="width:900px;margin:60px auto;text-align:center">
+            <el-form ref="form" :model="form" label-width="80px" :rules="rules"
+                     style="margin-top:100px;margin-left:5px;font-size:38px;float:left">
+                <el-form-item
+                        label="文件名"
+                        prop="docname"
+                        :rules="[
                         {required: true, message: '请输入标题', trigger: 'blur'},
                         {min: 2, max: 10, message: '长度在 2 到 10 个字符', trigger: 'blur'}
             ]">
-                <el-input v-model="form.docname"></el-input>
-            </el-form-item>
-            <el-form-item>
-                <div ref="editor" style="width:900px;margin:0 auto;text-align:left"></div>
-            </el-form-item>
-            <el-form-item>
-                <el-button type="primary" @click="onSubmit('form')">提交</el-button>
-                <el-button type="success" @click="toIndex()">取消</el-button>
-            </el-form-item>
+                    <el-input v-model="form.docname"></el-input>
+                </el-form-item>
+                <el-form-item>
+                    <div ref="editor" style="width:900px;margin:0 auto;text-align:left"></div>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" @click="onSubmit('form')">提交</el-button>
+                    <el-button type="success" @click="toIndex()">取消</el-button>
+                </el-form-item>
 
 
-        </el-form>
+            </el-form>
+        </div>
     </div>
 </template>
 
 <script>
     import E from 'wangeditor'
+    import AppHeader from './Header'
 
     export default {
         name: 'editor',
+        components: {
+            AppHeader
+        },
         data() {
             return {
                 form: {

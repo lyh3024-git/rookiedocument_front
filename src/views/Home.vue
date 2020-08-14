@@ -10,8 +10,7 @@
                 <el-col :span="2">
                     <div class="grid-content bg-purple">
                         <el-dropdown>
-                            <!--用户头像-->
-                            <el-avatar> user</el-avatar>
+                            <!--这里之后改成用户头像--><el-avatar> user</el-avatar>
                             <el-dropdown-menu slot="dropdown">
                                 <el-dropdown-item>
                                     <div @click="toPmsg">个人主页</div>
@@ -31,7 +30,7 @@
                 <el-menu>
                     <el-menu-item index="1">
                         <i class="el-icon-s-platform"></i>
-                        <span>我的桌面</span>
+                        <span @click="toRecent">我的桌面</span>
                     </el-menu-item>
                     <el-submenu index="2">
                         <template slot="title">
@@ -64,12 +63,12 @@
                     <!--回收站部分-->
                     <el-menu-item index="3">
                         <i class="el-icon-delete-solid"></i>
-                        <span slot="title">回收站</span>
+                        <span slot="title" @click="toTrash">回收站</span>
                     </el-menu-item>
                 </el-menu>
             </el-aside>
 
-            <el-main>Main</el-main>
+            <el-main><router-view></router-view></el-main>
 
         </el-container>
     </el-container>
@@ -119,6 +118,12 @@ Vue.prototype.$message=Message
           toPmsg() {
             this.$router.push({path: '/pmsg'});
           },
+          toRecent() {
+             this.$router.push({path: '/recent'});
+          },
+          toTrash() {
+             this.$router.push({path: '/trash'});
+          },
           changeCreateTeamVisible(opt) {
             if (opt == 1) {
               this.createTeamVisible = true;
@@ -143,7 +148,8 @@ Vue.prototype.$message=Message
           },
           exitLogin() {
 
-          }
+          },
+
         }
     };
 </script>

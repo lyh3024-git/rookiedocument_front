@@ -4,9 +4,9 @@
 //全局引入vue
 var cookie={
   setCookie (c_name, value, expiredays){
-    var exdate = new Date();　　
+    var exdate = new Date();
     exdate.setTime(exdate.getTime()+expiredays);
-    exdate.setDate(exdate.getDate() + expiredays);　　　　
+    exdate.setDate(exdate.getDate() + expiredays);
     document.cookie = c_name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString());
   },
   getCookie(name){

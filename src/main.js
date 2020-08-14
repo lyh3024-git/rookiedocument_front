@@ -7,13 +7,16 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import contentmenu from 'v-contextmenu'
 import 'v-contextmenu/dist/index.css'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 import store from './store'
-//在store/index.js里已经引入vuex
 
 
 Vue.use(Antd);
 Vue.use(ElementUI);
 Vue.use(contentmenu);
+Vue.prototype.$axios = axios
+Vue.use(VueAxios, axios)
 Vue.config.productionTip = false
 
 new Vue({

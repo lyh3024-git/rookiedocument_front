@@ -1,33 +1,27 @@
 <template>
-    <div class="re-header">
-        <div @click="toIndex" class="top-logo"/>
-        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect"
-                 active-text-color="none">
+    <el-row type="flex" class="row-bg">
+        <el-col :span="2">
+            <div class="webname"><span style="font-size:20px" @click="toIndex()">菜鸟文档</span></div>
+        </el-col>
+        <el-col :span="20"></el-col>
+        <el-col :span="2">
+            <div class="grid-content bg-purple">
+                <el-dropdown>
+                    <!--用户头像-->
+                    <el-avatar> user</el-avatar>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>
+                            <div @click="toPmsg">个人主页</div>
+                        </el-dropdown-item>
+                        <el-dropdown-item>
+                            <div @click="exitLogin">退出登录</div>
+                        </el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </div>
+        </el-col>
+    </el-row>
 
-            <el-menu-item index="1" class="nav">
-                <img src="image/logo.png" alt="">
-            </el-menu-item>
-
-            <el-submenu index="2" class="nav">
-                <template slot="title"><i class="el-icon-user"></i>个人中心</template>
-                <el-menu-item index="2-1" @click="toPmsg">个人主页</el-menu-item>
-                <el-menu-item index="2-2">退出登录</el-menu-item>
-            </el-submenu>
-
-            <el-menu-item index="3" class="nav">消息中心
-                <i class="el-icon-s-promotion"></i>
-            </el-menu-item>
-
-            <el-menu-item index="4" class="nav">
-                <el-button type="info" icon="el-icon-search" plain class="el-searchbutton" size="small">搜索</el-button>
-            </el-menu-item>
-
-            <el-menu-item index="5" class="nav">
-                <el-input placeholder="搜索文档" v-model="input" clearable></el-input>
-            </el-menu-item>
-
-        </el-menu>
-    </div>
 </template>
 
 <style>
