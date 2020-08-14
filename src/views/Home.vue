@@ -30,14 +30,16 @@
                 <el-button type="primary" plain class="el-buttontest" style="width: 120px" @click="toEditor">新建</el-button>
                 <el-button type="primary" plain class="el-buttontest" style="width: 120px">模板库</el-button>
                 <el-menu>
-                    <el-menu-item index="1">
-                        <i class="el-icon-s-platform"></i>
-                        <span @click="toRecent">我的桌面</span>
+                    <el-menu-item index="1" @click="toRecent" >
+                      <!--i与span对齐-->
+                      <span><i class="el-icon-s-platform" style="vertical-align:text-top"></i>我的桌面</span>
                     </el-menu-item>
                     <el-submenu index="2">
                         <template slot="title">
-                            <i class="el-icon-s-claim" @click="getTeams()"></i>
-                            <span @click="getTeams()">我的团队</span>
+                            <span @click="getTeams()">
+                              <i class="el-icon-s-claim" style="vertical-align: text-top"></i>
+                              我的团队
+                            </span>
                             <i class="el-icon-circle-plus" @click='changeCreateTeamVisible(1)'></i>
                         </template>
                       <!--创建团队对话框-->
@@ -63,9 +65,8 @@
 
                     </el-submenu>
                     <!--回收站部分-->
-                    <el-menu-item index="3">
-                        <i class="el-icon-delete-solid"></i>
-                        <span slot="title" @click="toTrash">回收站</span>
+                    <el-menu-item index="3" @click="toTrash">
+                        <span slot="title"><i class="el-icon-delete-solid" style="vertical-align: text-top"></i>回收站</span>
                     </el-menu-item>
                 </el-menu>
             </el-aside>
@@ -79,7 +80,6 @@
 <script>
 import Vue from 'vue'
 import {Message} from 'element-ui'
-
 Vue.prototype.$message=Message
     // @ is an alias to /src
     export default {
@@ -149,9 +149,7 @@ Vue.prototype.$message=Message
             //转到对应队伍空间
           },
           exitLogin() {
-
           },
-
         }
     };
 </script>
@@ -161,67 +159,51 @@ Vue.prototype.$message=Message
         width: 15%;
         float: left;
     }
-
     .test:nth-of-type(2) {
         width: 70%;
         float: left;
-
     }
-
     .main-font {
         font-family: cursive;
         font-size: 22px;
         padding-top: 10px;
         padding-left: 50px;
     }
-
     .test:nth-of-type(3) {
         width: 10%;
         float: left;
     }
-
     .nav:nth-of-type(1) {
-
         float: left;
     }
-
     .nav:nth-of-type(2) {
         float: right;
     }
-
     .nav:nth-of-type(3) {
         float: right;
-
     }
-
     .nav:nth-of-type(4) {
         padding-left: 0;
         float: right;
     }
-
     .nav:nth-of-type(5) {
         padding-right: 5px;
         float: right;
     }
-
     .el-menu-vertical-demo {
         padding-top: 35px;
     }
-
     .el-buttontest:nth-of-type(1) {
         margin: 10px 20px;
         padding: 12px 27px;
     }
-
     .el-buttontest:nth-of-type(2) {
         margin: 20px 20px;
     }
-
     .el-buttontest:nth-of-type(3) {
         margin: 20px 20px;
         padding: 12px 27px;
     }
-
     .el-searchbutton {
         background-color: gray;
     }
