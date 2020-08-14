@@ -4,7 +4,7 @@
       <div class="d2"><span class="el-icon-wtnickname"> </span>昵称：</div>
       <div style="float: left">
       <span v-show="!edit1">{{ msg.msg1 }}</span>
-          <el-input v-show="edit1" v-model="msg1" ref="msg" clearable></el-input>
+          <el-input v-show="edit1" v-model="msg.msg1"  clearable></el-input>
           <i
             :class="{'el-icon-edit': !edit1, 'el-icon-check': edit1}"
             @click="edit1 = !edit1"
@@ -41,7 +41,7 @@
       <div class="d2"><span class="el-icon-wticon-test"> </span>邮箱：</div>
       <div style="float: left">
         <span v-show="!edit2">{{ msg.msg2 }}</span>
-          <el-input v-show="edit2" v-model="msg2" clearable></el-input>
+          <el-input v-show="edit2" v-model="msg.msg2" clearable></el-input>
           <i
             :class="{'el-icon-edit': !edit2, 'el-icon-check': edit2}"
             @click="edit2 = !edit2"
@@ -53,7 +53,7 @@
       <div class="d2"><span class="el-icon-wtphone"> </span>电话：</div>
       <div style="float: left">
       <span v-show="!edit3">{{ msg.msg3 }}</span>
-          <el-input v-show="edit3" v-model="msg3" clearable></el-input>
+          <el-input v-show="edit3" v-model="msg.msg3" clearable></el-input>
           <i
             :class="{'el-icon-edit': !edit3, 'el-icon-check': edit3}"
             @click="edit3 = !edit3"
@@ -67,7 +67,7 @@
 <script>
 import Vue from 'vue'
 import {Message} from 'element-ui'
-import {login} from "../../../../xxproj/frontend/src/api/api";
+import {pmsg} from '../api/api'
 
 Vue.prototype.$message=Message
 export default {
@@ -99,7 +99,7 @@ export default {
         ],
         againpwd: [
           {required: true, message: '请确认新密码', trigger: 'blur'}
-        ]
+          ]
       },
     }
   },
@@ -110,7 +110,7 @@ export default {
           var that = this;
           pmsg({
             msg: that.msg,
-          }).then((response) => {
+          }).then(() => {
               that.setCookie('name', that.form.username, 7);
               //存储在store
           })
