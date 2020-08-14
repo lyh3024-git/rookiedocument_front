@@ -11,6 +11,48 @@
 
         <el-main>
             <!--文档卡片组-->
+            <el-row>
+                <el-col v-for="item in Files" :key="item.fileid" span="4">
+                    <el-card v-contextmenu:contextmenu shadow="hover" style="margin-left: 20px">
+                        <div class="card-body">
+                            <!-- 文档图标 -->
+                            <div class="card-picture">
+                                <span style="font-size:40px">
+                                    <i class="el-icon-document"></i>
+                                </span>
+                            </div>
+                            <!-- 文档标题、创建时间 -->
+                            <div class="card-word">
+                                <div style="font-size:15px">{{item.filename}}</div>
+                                <div style="font-size:15px">{{item.createtime}}</div>
+                            </div>
+                        </div>
+                    </el-card>
+                    <v-contextmenu ref="contextmenu" theme="bright" style="width:180px">
+                        <v-contextmenu-item @click="handleRightMenuClick">
+                            <el-icon class="el-icon-folder-opened"/>
+                            <span style="margin-left:3px">打开</span>
+                        </v-contextmenu-item>
+                        <v-contextmenu-item @click="handleRightMenuClick">
+                            <el-icon class="el-icon-edit-outline"/>
+                            <span style="margin-left:3px">重命名</span>
+                        </v-contextmenu-item>
+                        <v-contextmenu-item @click="handleRightMenuClick">
+                            <el-icon class="el-icon-setting"/>
+                            <span style="margin-left:3px">权限设置</span>
+                        </v-contextmenu-item>
+                        <v-contextmenu-item @click="handleRightMenuClick">
+                            <el-icon class="el-icon-delete"/>
+                            <span style="margin-left:3px">删除</span>
+                        </v-contextmenu-item>
+                        <v-contextmenu-item @click="handleRightMenuClick">
+                            <el-icon class="el-icon-chat-line-round"/>
+                            <span style="margin-left:3px">分享</span>
+                        </v-contextmenu-item>
+                    </v-contextmenu>
+                </el-col>
+            </el-row>
+
         </el-main>
     </el-container>
 </template>
@@ -28,6 +70,21 @@
                     email: "",
 
                 },
+                Files: [
+                    {
+                        fileid: "1",
+                        filename: "文档A",
+                        createtime: "2020.1.1",
+                        updatetime: "2020.2.2",
+                    },
+                    {
+                        fileid: "2",
+                        filename: "文档B",
+                        createtime: "2020.1.1",
+                        updatetime: "2020.2.2",
+                    },
+
+                ]
             };
         },
         created() {

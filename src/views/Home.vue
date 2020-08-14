@@ -27,6 +27,8 @@
         <el-container>
             <!--侧边栏-->
             <el-aside>
+                <el-button type="primary" plain class="el-buttontest" style="width: 120px" @click="toEditor">新建</el-button>
+                <el-button type="primary" plain class="el-buttontest" style="width: 120px">模板库</el-button>
                 <el-menu>
                     <el-menu-item index="1">
                         <i class="el-icon-s-platform"></i>
@@ -35,7 +37,7 @@
                     <el-submenu index="2">
                         <template slot="title">
                             <i class="el-icon-s-claim" @click="getTeams()"></i>
-                            <span style="margin-right: 50px" @click="getTeams()">我的团队</span>
+                            <span @click="getTeams()">我的团队</span>
                             <i class="el-icon-circle-plus" @click='changeCreateTeamVisible(1)'></i>
                         </template>
                       <!--创建团队对话框-->
