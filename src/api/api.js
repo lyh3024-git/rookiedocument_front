@@ -12,3 +12,7 @@ export const register = parmas => {
 export const login = params => {
     return axios.post(`${host}/login/`, params)
 }
+
+export const pmsg = params => {
+    return axios.post(`${host}/pmsg/`, params)
+}
