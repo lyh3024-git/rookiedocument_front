@@ -190,124 +190,137 @@
     import E from "wangeditor";
 
     export default {
-        name: "editor",
-        components: {},
-        data() {
-            return {
-                visible: false,
-                visible_drawer: false,
-                documentlinks: "http:\\xxxxx",
-                newcontent: "",
-                newcomment: {
-                    name: "001",
-                    avatar: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-                    content: "",
-                    action: null,
-                    time: "12:00",
-                    likes: 0,
-                    dislikes: 0,
-                },
-                comment: [{
-                    name: "001",
-                    avatar: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-                    content: "hhh",
-                    action: null,
-                    time: "12:00",
-                    likes: 0,
-                    dislikes: 0,
-                },
-                    {
-                        name: "001",
-                        avatar: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
-                        content: "hhh",
-                        action: null,
-                        time: "12:00",
-                        likes: 0,
-                        dislikes: 0,
-                    }],
+      name: "editor",
+      components: {},
+      data() {
+        return {
+          visible: false,
+          visible_drawer: false,
+          documentlinks: "http:\\xxxxx",
+          newcontent: "",
+          activeIndex: '',
+          newcomment: {
+            name: "001",
+            avatar: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+            content: "",
+            action: null,
+            time: "12:00",
+            likes: 0,
+            dislikes: 0,
+          },
+          comment: [{
+            name: "001",
+            avatar: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+            content: "hhh",
+            action: null,
+            time: "12:00",
+            likes: 0,
+            dislikes: 0,
+          },
+            {
+              name: "001",
+              avatar: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+              content: "hhh",
+              action: null,
+              time: "12:00",
+              likes: 0,
+              dislikes: 0,
+            }],
 
 
-                form: {
-                    docname: ""
-                },
-                editorContent: ""
-            };
-
-        },
-        methods: {
-            getContent: function () {
-                alert(this.editorContent);
-            },
-            onSubmit(formName) {
-                this.$refs[formName].validate(valid => {
-                    if (valid) {
-                        alert("提交成功");
-                        //后接跳转函数
-                    } else {
-                        console.log("error submit!!");
-                        return false;
-                    }
-                });
-            },
-            toIndex() {
-                this.$router.push({path: "/home"});
-            },
-            collect() {
-                alert("收藏成功")
-            },
-            /* 增加评论 */
-            addcomment() {
-                this.newcomment.content = this.newcontent
-                this.newcontent = ""
-                let data = Object.assign({}, JSON.parse(JSON.stringify(this.newcomment)));
-                this.comment.push(data);
-                /* 把content传给后台，从后台请求comment */
-            },
-            /* 控制分享modal */
-            showModal() {
-                this.visible = true;
-            },
-            hideModal() {
-                this.visible = false;
-            },
-            /* 控制评论点赞 */
-            like() {
-                this.likes++;
-
-                this.action = 'liked';
-            },
-            dislike() {
-
-                this.dislikes++;
-                this.action = 'disliked';
-            },
-            /* 控制评论弹窗 */
-            afterVisibleChange(val) {
-                console.log('visible', val);
-            },
-            showDrawer() {
-                this.visible_drawer = true;
-            },
-            onClose() {
-                this.visible_drawer = false;
-            },
-            /* 复制地址的提示 */
-            // onCopy: function (e) {
-            //   alert('You just copied: ' + e.text)
-            // },
-            // onError: function () {
-            //   alert('Failed to copy texts')
-            // }
-        },
-        mounted() {
-            var editor = new E('#div1', '#div2');
-            editor.customConfig.onchange = html => {
-                this.editorContent = html;
-            };
-            editor.customConfig.zIndex = 100
-            editor.create();
+          form: {
+            docname: "",
+            content: "",
+            owner: "",
+          },
+          rules: {},
+          pagination:''
         }
-    };
+      },
+      methods: {
+        handleSelect(){},
+        handleChange(){},
+        onSearch(){},
+        confirm(){},
+        getContent: function () {
+          alert(this.form.content);
+        },
+        onSubmit(form) {
+          this.form.content = this.editor.txt.html()
+          this.form.owner = window.localStorage['userId']
+          this.$refs[form].validate(valid => {
+            if (valid) {
+              alert("提交成功");
+              //后接跳转函数
+            } else {
+              console.log("error submit!!");
+              return false;
+            }
+          });
+        },
+        toIndex() {
+          this.$router.push({path: "/home"});
+        },
+        toPmsg() {
+          this.$router.push({path: "/pmsg"});
+        },
+        collect() {
+          alert("收藏成功")
+        },
+        /* 增加评论 */
+        addcomment() {
+          this.newcomment.content = this.newcontent
+          this.newcontent = ""
+          let data = Object.assign({}, JSON.parse(JSON.stringify(this.newcomment)));
+          this.comment.push(data);
+          /* 把content传给后台，从后台请求comment */
+        },
+        /* 控制分享modal */
+        showModal() {
+          this.visible = true;
+        },
+        hideModal() {
+          this.visible = false;
+        },
+        /* 控制评论点赞 */
+        like() {
+          this.likes++;
+
+          this.action = 'liked';
+        },
+        dislike() {
+
+          this.dislikes++;
+          this.action = 'disliked';
+        },
+        /* 控制评论弹窗 */
+        afterVisibleChange(val) {
+          console.log('visible', val);
+        },
+        showDrawer() {
+          this.visible_drawer = true;
+        },
+        onClose() {
+          this.visible_drawer = false;
+        },
+        /* 复制地址的提示 */
+        // onCopy: function (e) {
+        //   alert('You just copied: ' + e.text)
+        // },
+        // onError: function () {
+        //   alert('Failed to copy texts')
+        // }
+      },
+      mounted() {
+        this.editor = new E('#div1', '#div2');
+        this.editor.customConfig.onchange = html => {
+          this.form.content = html;
+        };
+        this.editor.customConfig.zIndex = 100
+        this.editor.create();
+        this.editor.txt.html()
+      }
+    }
 </script>
 
 <style scoped>
