@@ -1,10 +1,10 @@
 <template>
     <el-container style="height: 100%; width: 100%; border: 1px">
         <el-header>
-            <el-menu :default-active="$route.path" @select="handleSelect" class="el-menu-demo" active-text-color="#1E90FF" mode="horizontal" router>
-                <el-menu-item index="/recent">最近使用</el-menu-item>
-                <el-menu-item index="/mydoc">我的创建</el-menu-item>
-                <el-menu-item index="/favour">我的收藏</el-menu-item>
+            <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
+                <el-menu-item index="1" @click="toRecent">最近使用</el-menu-item>
+                <el-menu-item index="2" @click="toMydoc">我的创建</el-menu-item>
+                <el-menu-item index="3" @click="toFavour">我的收藏</el-menu-item>
             </el-menu>
         </el-header>
         <div>我的文档</div>
@@ -22,7 +22,9 @@
                     id: "",
                     username: "",
                     email: "",
+
                 },
+                activeIndex:"1"
             };
         },
         created() {
@@ -65,4 +67,5 @@
 </script>
 
 <style scoped>
+
 </style>
