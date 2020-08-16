@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-let host = 'http://127.0.0.1:8000';
+let host = 'http://116.62.179.163:8000';
 
 
 export const register = parmas => {
@@ -15,4 +15,15 @@ export const login = params => {
 
 export const pmsg = params => {
     return axios.post(`${host}/pmsg/`, params)
+}
+
+export const getUserInfo = params => {
+    return axios.get(`${host}/users/${params.id}/`, params)
+}
+export const updateUserInfo = params => {
+    return axios.put(`${host}/users/${params.id}/`, params)
+}
+
+export const contentsList = params => {
+    return axios.get(`${host}/contents/`, params)
 }

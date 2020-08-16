@@ -52,9 +52,12 @@
                             password: that.form.password
                         }).then((response) => {
                             if (response.data.flag === "success") {
+                                alert('登录成功')
                                 console.log(response.data);
-                                that.setCookie('name', that.form.username, 7);
-                                //存储在store
+                                localStorage.setItem("user",JSON.stringify(response.data))
+                                //that.setCookie('name', that.form.username, 7);
+                                //上一句保存登录用户到cookie，但是有问题，您给改一下
+
                                 this.$router.push({path: '/home'});
                             } else {
                                 alert('密码错误')
