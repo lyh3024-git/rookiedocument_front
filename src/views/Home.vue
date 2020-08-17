@@ -39,14 +39,14 @@
         >新建</el-button>
         <el-button type="primary" :plain="plain" class="el-buttontest" style="width: 120px">模板库</el-button>
         <el-menu>
-          <el-menu-item index="1">
+          <el-menu-item index="1" @click="toRecent">
             <i class="el-icon-s-platform"></i>
-            <span @click="toRecent">我的桌面</span>
+            <span>我的桌面</span>
           </el-menu-item>
           <el-submenu index="2">
             <template slot="title">
               <i class="el-icon-s-claim" @click="getTeams()"></i>
-              <span @click="getTeams()">团队空间</span>
+                <span @click="getTeams()">团队空间 </span>
               <i class="el-icon-circle-plus" @click="changeCreateTeamVisible(1)"></i>
             </template>
             <el-menu-item-group>
@@ -77,9 +77,9 @@
             </el-menu-item-group>
           </el-submenu>
           <!--回收站部分-->
-          <el-menu-item index="3">
+          <el-menu-item index="3" @click="toTrash">
             <i class="el-icon-delete-solid"></i>
-            <span slot="title" @click="toTrash">回收站</span>
+            <span slot="title">回收站</span>
           </el-menu-item>
         </el-menu>
       </el-aside>

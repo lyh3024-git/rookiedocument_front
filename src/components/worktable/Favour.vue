@@ -1,11 +1,11 @@
 <template>
     <el-container style="height: 100%; width: 100%; border: 1px">
         <el-header>
-            <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
-                <el-menu-item index="1" @click="toRecent">最近使用</el-menu-item>
-                <el-menu-item index="2" @click="toMydoc">我的创建</el-menu-item>
-                <el-menu-item index="3" @click="toFavour">我的收藏</el-menu-item>
-            </el-menu>
+            <el-menu :default-active="$route.name" class="el-menu-demo" mode="horizontal">
+            <el-menu-item index="Recent" :route="{path:'/recent'}" @click="toRecent">最近使用</el-menu-item>
+            <el-menu-item index="Mydoc" :route="{path:'/mydoc'}" @click="toMydoc">我的创建</el-menu-item>
+            <el-menu-item index="Favour" :route="{path:'/facour'}" @click="toFavour">我的收藏</el-menu-item>
+          </el-menu>
         </el-header>
         <div>我的收藏</div>
     </el-container>
