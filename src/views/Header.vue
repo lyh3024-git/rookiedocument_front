@@ -1,8 +1,12 @@
 <template>
-  <el-row type="flex" class="row-bg">
-    <el-col :span="2">
+  <el-row
+      type="flex"
+      class="row-bg"
+      style="background-image: linear-gradient(to right,lightseagreen,skyblue);"
+  >
+    <el-col :span="3">
       <div class="webname">
-        <span style="font-size:20px" @click="toIndex()">菜鸟文档</span>
+        <span style="font-size:22px;font-family: 微软雅黑;-webkit-text-stroke:1px honeydew;color: transparent;" @click="toIndex()">菜鸟文档</span>
       </div>
     </el-col>
     <el-col :span="20"></el-col>

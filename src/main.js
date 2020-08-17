@@ -11,8 +11,10 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueClipboard from 'vue-clipboard2'
 import store from './store'
+import './assets/icon/iconfont.css'
+import VueParticles from 'vue-particles'
 
-
+Vue.use(VueParticles)
 Vue.use(Antd);
 Vue.use(ElementUI);
 Vue.use(contentmenu);
