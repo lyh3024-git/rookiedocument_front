@@ -18,12 +18,12 @@ export const pmsg = params => {
 }
 
 export const getUserInfo = params => {
-    return axios.get(`${host}/users/${params.id}/`, params)
+    return axios.get(`${host}/user/${params.id}/`, params)
 }
 export const updateUserInfo = params => {
-    return axios.put(`${host}/users/${params.id}/`, params)
+    return axios.put(`${host}/user/${params.id}/`, params)
 }
 
 export const contentsList = params => {
-    return axios.get(`${host}/contents/`, params)
+    return axios.get(`${host}/content/`, params)
 }
