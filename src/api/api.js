@@ -5,7 +5,7 @@ let host = 'http://116.62.179.163:8000';
 
 
 export const register = parmas => {
-    return axios.post(`${host}/users/`, parmas)
+    return axios.post(`${host}/user/`, parmas)
 };
 
 
