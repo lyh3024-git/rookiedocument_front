@@ -47,6 +47,13 @@ const routes = [{
                 component: () =>
                     import ('../views/Teamspace.vue')
             },
+            {
+                path: '/component',
+                name: 'Component',
+                meta: { tittle: '模板库' },
+                component: () =>
+                    import ('../views/Component')
+            },
         ]
     },
     {
@@ -97,6 +104,13 @@ const routes = [{
         meta: { tittle: '个人页面', },
         component: () =>
             import ('../views/Test.vue')
+    },
+    {
+        path: '/reject',
+        name: 'Reject',
+        meta: { tittle: '个人页面', },
+        component: () =>
+            import ('../views/Permission')
     },
 
 ]

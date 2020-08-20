@@ -35,7 +35,11 @@
 </template>
 
 <script>
+    import Vue from "vue";
+    Vue.prototype.$message = Message;
+    import {Message} from "element-ui";
     import {register} from '../api/api'
+
     export default {
         data() {
             var validatePass = (rule, value, callback) => {
@@ -78,7 +82,6 @@
             onSubmit(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        //alert('注册成功');
                         //后接跳转函数
                         var that = this;
                         register({
@@ -86,14 +89,23 @@
                             password: that.form.password,
                             username: that.form.username,
                         }).then((response) => {
-                            console.log(response)
-                            this.$router.push({path: '/login'});
+                            if (response.data.msg == "success") {
+                                this.$message({
+                                    message: "注册成功",
+                                    type: "success",
+                                });
+                                this.$router.push({path: '/login'});
+                            } else {
+                                this.$message.error("用户名重复，注册失败");
+                            }
+
 
                         }).catch(function (error) {
-                            that.error.mobile = error.username ? error.username[0] : '';
+                            console.log(error)
                         });
                     } else {
                         console.log('error submit!!');
+                        this.$message.error("填写信息有误，请核查");
                         return false;
                     }
                 });

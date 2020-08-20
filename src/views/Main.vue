@@ -117,7 +117,6 @@ body > .el-container {
   font-family: cursive;
   font-size: 30px;
   position: absolute;
-  color: #e5e5e5;
   padding-left: 5%;
 }
 

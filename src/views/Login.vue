@@ -42,10 +42,6 @@
             onSubmit(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                       // alert('登录成功');
-                        //后接跳转函数
-                        //测试
-                        //this.$router.push({path: '/home'});
                         var that = this;
                         login({
                             username: that.form.username, //当前页码
@@ -53,11 +49,7 @@
                         }).then((response) => {
                             if (response.data.flag === "success") {
                                 alert('登录成功')
-                                console.log(response.data);
                                 localStorage.setItem("user",JSON.stringify(response.data))
-                                //that.setCookie('name', that.form.username, 7);
-                                //上一句保存登录用户到cookie，但是有问题，您给改一下
-
                                 this.$router.push({path: '/home'});
                             } else {
                                 alert('密码错误')
